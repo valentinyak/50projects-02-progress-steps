@@ -65,13 +65,12 @@ function changeBtnAttribute(
 function colorizeCircleButton(button, buttonsArray, index) {
   button.classList.add('active');
 
-  startCircleButtonIndex += 1;
+  startCircleButtonIndex = index;
+
   changeBtnAttribute(buttonsArray, index, true);
 
   if (index + 1 !== buttonsArray.length) {
     if (buttonsArray[index + 1].classList.contains('active')) {
-      startCircleButtonIndex = index;
-
       buttonsArray.forEach((button1, index1) => {
         if (index < index1) {
           button1.classList.remove('active');
@@ -87,20 +86,18 @@ function changeStandartBtnAttribute(
   buttonsArray,
   attribute = 'disabled',
 ) {
-  console.log(buttonIndex);
-  console.log(startCircleButtonIndex);
-
   if (buttonIndex === 0) {
     if (startCircleButtonIndex === 0) {
       buttonsArray[0].setAttribute(attribute, true);
-      // } else {
+      buttonsArray[1].removeAttribute(attribute);
+    } else {
       buttonsArray[1].removeAttribute(attribute);
     }
   } else {
     if (startCircleButtonIndex + 1 < circleButtons.length) {
       buttonsArray[0].removeAttribute(attribute);
       buttonsArray[1].removeAttribute(attribute);
-    } else if (startCircleButtonIndex + 1 === circleButtons.length) {
+    } else {
       buttonsArray[1].setAttribute(attribute, true);
     }
   }
