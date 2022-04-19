@@ -1,4 +1,5 @@
 const circleButtons = document.querySelectorAll('.circle-button');
+// const numbersListElements = document.querySelectorAll('.numbers-list>li');
 const standartButtons = document.querySelectorAll('.standart-button');
 let startCircleButtonIndex = 0;
 
