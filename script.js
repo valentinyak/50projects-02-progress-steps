@@ -1,5 +1,5 @@
 const circleButtons = document.querySelectorAll('.circle-button');
-// const numbersListElements = document.querySelectorAll('.numbers-list>li');
+const allLines = document.querySelectorAll('.line');
 const standartButtons = document.querySelectorAll('.standart-button');
 let startCircleButtonIndex = 0;
 
@@ -64,11 +64,11 @@ function changeBtnAttribute(
 }
 
 function colorizeCircleButton(button, buttonsArray, index) {
-  button.classList.add('active');
-
   startCircleButtonIndex = index;
 
+  button.classList.add('active');
   changeBtnAttribute(buttonsArray, index, true);
+  colorizeLine(allLines, button, index);
 
   if (index + 1 !== buttonsArray.length) {
     if (buttonsArray[index + 1].classList.contains('active')) {
@@ -101,5 +101,27 @@ function changeStandartBtnAttribute(
     } else {
       buttonsArray[1].setAttribute(attribute, true);
     }
+  }
+}
+
+function colorizeLine(linesArray, button, indxB) {
+  console.log(indxB);
+  if (indxB > 0) {
+    linesArray.forEach((line, indxL) => {
+      if (indxB - 1 >= indxL) {
+        if (
+          button.classList.contains('active') &&
+          !line.classList.contains('active')
+        ) {
+          line.classList.add('active');
+        }
+      } else {
+        line.classList.remove('active');
+      }
+    });
+  } else {
+    linesArray.forEach(line => {
+      line.classList.remove('active');
+    });
   }
 }
