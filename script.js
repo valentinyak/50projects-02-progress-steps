@@ -105,7 +105,6 @@ function changeStandartBtnAttribute(
 }
 
 function colorizeLine(linesArray, button, indxB) {
-  console.log(indxB);
   if (indxB > 0) {
     linesArray.forEach((line, indxL) => {
       if (indxB - 1 >= indxL) {
